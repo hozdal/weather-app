@@ -47,11 +47,10 @@ function App() {
   if(!weatherInfo) return null
 
   return (
-    <div className="bg-red-300 min-h-screen flex flex-col items-center mx-auto">
+    <div className="bg-blue-400 min-h-screen flex flex-col items-center mx-auto">
       <br />
-      <br />
-      <br />
-      <select value={selectedCity} onChange={handleSelect} className="select w-full max-w-xs">
+      <br /><br />
+      <select value={selectedCity} onChange={handleSelect} className=" bg-purple-300 select w-64 max-w-xs">
         {cities.map((x, index) => (
           <option key={x.name} value={index}>
             {x.name}
@@ -60,27 +59,27 @@ function App() {
       </select>
       <br />
       <br />
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="bg-purple-300 card w-64  shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{cityInfo.name} <i className={`display-2 wi ${wiIcons[weatherInfo.current.weather[0].icon]}`}></i></h2>
           
           <span>
             Sıcaklık: {kelvinToCelcius(weatherInfo.current.temp).toFixed(1)}{" "}
-            derece
+            C°
           </span>
         </div>
       </div>
       <br />
       <br />
-      <div className="card  bg-base-100 shadow-xl">
+      <div className="bg-purple-300 card  shadow-xl">
         <div className="card-body items-center gap-8">
-          <h2 className="card-title">Haftalık</h2>
+          <h2 className="card-title">Haftalık Hava Durumu</h2>
           <div className="flex gap-4 text-left">
             {weatherInfo.daily.map((x, index) => (
               <div key={index}>
                 {daysOfWeeks[index % 7]} <i className={`fs-1 wi ${wiIcons[x.weather[0].icon]}`} style={{ color: '#ddd' }} />
                 <br />
-                {kelvinToCelcius(x.temp.day).toFixed(1)} derece
+                {kelvinToCelcius(x.temp.day).toFixed(1)} C°
               </div>
             ))}
           </div>
